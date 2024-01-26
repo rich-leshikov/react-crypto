@@ -1,6 +1,4 @@
-import { AppContent } from '@/components/layout/AppContent'
-import { AppHeader } from '@/components/layout/AppHeader'
-import { AppSider } from '@/components/layout/AppSider'
+import { AppContent, AppHeader, AppSider } from '@/components'
 import { Layout } from 'antd'
 
 export const App = () => {
