@@ -1,6 +1,6 @@
-import { cryptoAssets, cryptoData } from '@/data.js'
+import { CryptoAssets, CryptoData, cryptoAssets, cryptoData } from '@/data'
 
-export const fakeFetchCrypto = () => {
+export const fakeFetchCrypto = (): Promise<CryptoData> => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(cryptoData)
@@ -8,7 +8,7 @@ export const fakeFetchCrypto = () => {
   })
 }
 
-export const fetchAssets = () => {
+export const fetchAssets = (): Promise<CryptoAssets> => {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(cryptoAssets)
