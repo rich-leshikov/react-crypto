@@ -611,14 +611,22 @@ export const cryptoAssets = [
   {
     amount: 0.02,
     date: new Date(),
+    grow: false,
+    growPercent: 0,
     id: 'bitcoin',
     price: 26244,
+    totalAmount: 0,
+    totalProfit: 0,
   },
   {
     amount: 5,
     date: new Date(),
+    grow: false,
+    growPercent: 0,
     id: 'ethereum',
     price: 2400,
+    totalAmount: 0,
+    totalProfit: 0,
   },
 ]
 
