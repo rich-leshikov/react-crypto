@@ -19,6 +19,40 @@ const data = [
 ]
 
 export const AppSider = () => {
+  const [loading, setLoading] = useState<boolean>(false)
+  const [crypto, setCrypto] = useState<[] | CryptoDataResult>([])
+  const [assets, setAssets] = useState<[] | CryptoAssets>([])
+
+  useEffect(() => {
+    const preload = async () => {
+      setLoading(true)
+      const { result } = await fakeFetchCrypto()
+      const assets = await fetchAssets()
+
+      setAssets(
+        assets.map(asset => {
+          const coin = result.find(c => c.id === asset.id)
+
+          if (coin) {
+            return {
+              ...asset,
+              grow: asset.price < coin.price,
+              growPercent: percentDifference(asset.price, coin.price),
+              totalAmount: asset.amount * coin.price,
+              totalProfit: asset.amount * coin.price - asset.amount * asset.price,
+            }
+          } else {
+            return asset
+          }
+        })
+      )
+      setCrypto(result)
+      setLoading(false)
+    }
+
+    preload()
+  }, [])
+
   return (
     <Layout.Sider style={siderStyle} width={'25%'}>
       <Card style={{ marginBottom: '1rem' }}>
