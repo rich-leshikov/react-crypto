@@ -3,14 +3,14 @@ import React, { useContext } from 'react'
 import { CryptoContext } from '@/context/crypto-context'
 import { capitalize } from '@/utils'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
-import { Card, Layout, List, Spin, Statistic, Tag, Typography } from 'antd'
+import { Card, Layout, List, Statistic, Tag, Typography } from 'antd'
 
 const siderStyle: React.CSSProperties = {
   padding: '1rem',
 }
 
 export const AppSider = () => {
-  const { assets, loading } = useContext(CryptoContext)
+  const { assets } = useContext(CryptoContext)
 
   const assetsCards = assets.map(asset => (
     <Card key={asset.id} style={{ marginBottom: '1rem' }}>
@@ -45,10 +45,6 @@ export const AppSider = () => {
       />
     </Card>
   ))
-
-  if (loading) {
-    return <Spin fullscreen />
-  }
 
   return (
     <Layout.Sider style={siderStyle} width={'25%'}>
