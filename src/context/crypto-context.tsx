@@ -6,14 +6,12 @@ import { percentDifference } from '@/utils'
 
 type Context = {
   assets: [] | CryptoAssets
-  context: boolean
   crypto: [] | CryptoDataResult
   loading: boolean
 }
 
 export const CryptoContext = createContext<Context>({
   assets: [],
-  context: false,
   crypto: [],
   loading: false,
 })
@@ -54,8 +52,6 @@ export const CryptoContextProvider = ({ children }: { children: ReactNode }) => 
   }, [])
 
   return (
-    <CryptoContext.Provider value={{ assets, context: false, crypto, loading }}>
-      {children}
-    </CryptoContext.Provider>
+    <CryptoContext.Provider value={{ assets, crypto, loading }}>{children}</CryptoContext.Provider>
   )
 }
