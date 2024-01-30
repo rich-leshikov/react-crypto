@@ -1,14 +1,17 @@
 import { AppContent, AppHeader, AppSider } from '@/components'
+import { CryptoContextProvider } from '@/context/crypto-context'
 import { Layout } from 'antd'
 
 export const App = () => {
   return (
-    <Layout>
-      <AppHeader />
+    <CryptoContextProvider>
       <Layout>
-        <AppSider />
-        <AppContent />
+        <AppHeader />
+        <Layout>
+          <AppSider />
+          <AppContent />
+        </Layout>
       </Layout>
-    </Layout>
+    </CryptoContextProvider>
   )
 }
