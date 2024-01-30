@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useCrypto } from '@/context/crypto-context'
+import { useCrypto } from '@/context'
 import { capitalize } from '@/utils'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 import { Card, Layout, List, Statistic, Tag, Typography } from 'antd'

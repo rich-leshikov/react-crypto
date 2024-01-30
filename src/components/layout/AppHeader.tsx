@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { useCrypto } from '@/context/crypto-context'
+import { useCrypto } from '@/context'
 import { Button, Layout, Modal, Select, Space } from 'antd'
 
 /* eslint-disable */

@@ -1,5 +1,5 @@
-import { AppLayout } from '@/components/layout/AppLayout'
-import { CryptoContextProvider } from '@/context/crypto-context'
+import { AppLayout } from '@/components'
+import { CryptoContextProvider } from '@/context'
 
 export const App = () => {
   return (

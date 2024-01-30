@@ -1,5 +1,5 @@
 import { AppContent, AppHeader, AppSider } from '@/components'
-import { useCrypto } from '@/context/crypto-context'
+import { useCrypto } from '@/context'
 import { Layout, Spin } from 'antd'
 
 export const AppLayout = () => {
