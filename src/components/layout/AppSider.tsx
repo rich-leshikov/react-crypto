@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React from 'react'
 
-import { CryptoContext } from '@/context/crypto-context'
+import { useCrypto } from '@/context/crypto-context'
 import { capitalize } from '@/utils'
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 import { Card, Layout, List, Statistic, Tag, Typography } from 'antd'
@@ -10,7 +10,7 @@ const siderStyle: React.CSSProperties = {
 }
 
 export const AppSider = () => {
-  const { assets } = useContext(CryptoContext)
+  const { assets } = useCrypto()
 
   const assetsCards = assets.map(asset => (
     <Card key={asset.id} style={{ marginBottom: '1rem' }}>

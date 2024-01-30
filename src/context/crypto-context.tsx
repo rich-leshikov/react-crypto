@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from 'react'
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
 
 import { fakeFetchCrypto, fetchAssets } from '@/api'
 import { CryptoAssets, CryptoDataResult } from '@/data'
@@ -54,4 +54,8 @@ export const CryptoContextProvider = ({ children }: { children: ReactNode }) => 
   return (
     <CryptoContext.Provider value={{ assets, crypto, loading }}>{children}</CryptoContext.Provider>
   )
+}
+
+export const useCrypto = () => {
+  return useContext(CryptoContext)
 }

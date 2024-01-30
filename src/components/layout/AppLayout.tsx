@@ -1,11 +1,9 @@
-import { useContext } from 'react'
-
 import { AppContent, AppHeader, AppSider } from '@/components'
-import { CryptoContext } from '@/context/crypto-context'
+import { useCrypto } from '@/context/crypto-context'
 import { Layout, Spin } from 'antd'
 
 export const AppLayout = () => {
-  const { loading } = useContext(CryptoContext)
+  const { loading } = useCrypto()
 
   if (loading) {
     return <Spin fullscreen />
