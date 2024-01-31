@@ -23,6 +23,7 @@ const validateMessages = {
 }
 
 export const AddAssetForm = () => {
+  const [submitted, setSubmitted] = useState<boolean>(false)
   const [coin, setCoin] = useState<CryptoCoinData | null>(null)
   const [form] = Form.useForm()
   const { crypto } = useCrypto()
@@ -49,6 +50,21 @@ export const AddAssetForm = () => {
     } else {
       form.setFieldsValue({ total: 0 })
     }
+  }
+
+  if (submitted) {
+    return (
+      <Result
+        extra={[
+          <Button key={'console'} onClick={() => setSubmitted(false)} type={'primary'}>
+            Close
+          </Button>,
+        ]}
+        status={'success'}
+        subTitle={`Added ${42} of ${coin?.name} by price ${24}`}
+        title={'Your asset has been added successfully!'}
+      />
+    )
   }
 
   if (!coin) {
