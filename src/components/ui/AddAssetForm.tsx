@@ -2,7 +2,7 @@ import { useRef, useState } from 'react'
 
 import { CoinInfo } from '@/components'
 import { useCrypto } from '@/context'
-import { CryptoCoinData } from '@/data'
+import { CryptoAsset, CryptoCoinData } from '@/data'
 import { Button, DatePicker, Divider, Form, InputNumber, Result, Select, Space } from 'antd'
 
 type FieldType = {
@@ -10,13 +10,6 @@ type FieldType = {
   date?: string
   price?: number
   total?: number
-}
-
-type AssetType = {
-  amount: number
-  date: any
-  id: string
-  price: number
 }
 
 const validateMessages = {
@@ -33,19 +26,26 @@ export const AddAssetForm = () => {
   const [submitted, setSubmitted] = useState<boolean>(false)
   const [coin, setCoin] = useState<CryptoCoinData | null>(null)
   const [form] = Form.useForm()
-  const { crypto } = useCrypto()
-  const assetRef = useRef<AssetType>()
+  const { addAsset, crypto } = useCrypto()
+  const assetRef = useRef<CryptoAsset>()
 
-  const onFinish = (values: any) => {
+  const onFinish = (values: { amount: number; date: Date; price: number }) => {
     if (coin) {
-      assetRef.current = {
+      const newAsset: CryptoAsset = {
         /* eslint-disable */
         id: coin.id,
         amount: values.amount,
         price: values.price,
-        date: values.date?.$d ?? new Date(),
+        date: values.date ?? new Date(),
+        grow: false,
+        growPercent: 0,
+        totalAmount: 0,
+        totalProfit: 0,
         /* eslint-enable */
       }
+
+      assetRef.current = newAsset
+      addAsset(newAsset)
     }
 
     setSubmitted(true)
