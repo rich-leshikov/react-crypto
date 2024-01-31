@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
+import { CoinInfoModal } from '@/components'
 import { useCrypto } from '@/context'
+import { CryptoCoinData } from '@/data'
 import { Button, Layout, Modal, Select, Space } from 'antd'
 
 /* eslint-disable */
@@ -17,7 +19,8 @@ const headerStyle: React.CSSProperties = {
 
 export const AppHeader = () => {
   const [select, setSelect] = useState<boolean>(false)
-  const [modal, setModal] = useState<boolean>(true)
+  const [modal, setModal] = useState<boolean>(false)
+  const [coin, setCoin] = useState<CryptoCoinData | null>(null)
   const { crypto } = useCrypto()
 
   useEffect(() => {
@@ -33,6 +36,11 @@ export const AppHeader = () => {
   }, [])
 
   const onSelect = (value: string) => {
+    const searchedCoin = crypto.find(c => c.id === value)
+
+    if (searchedCoin) {
+      setCoin(searchedCoin)
+    }
     setModal(true)
   }
 
@@ -58,9 +66,7 @@ export const AppHeader = () => {
       />
       <Button type={'primary'}>Add Asset</Button>
       <Modal footer={null} onCancel={() => setModal(false)} open={modal}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <CoinInfoModal coin={coin} />
       </Modal>
     </Layout.Header>
   )
