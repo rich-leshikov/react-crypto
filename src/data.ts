@@ -297,8 +297,10 @@ export const cryptoData = {
       priceChange1d: -4,
       priceChange1h: -0.37,
       priceChange1w: -13.77,
+      /* eslint-disable */
       rank: 10,
       redditUrl: 'https://www.reddit.com/r/Avax',
+      /* eslint-enable */
       symbol: 'AVAX',
       totalSupply: 434630281,
       twitterUrl: 'https://twitter.com/avax',
