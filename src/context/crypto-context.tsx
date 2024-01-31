@@ -1,16 +1,18 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react'
 
 import { fakeFetchCrypto, fetchAssets } from '@/api'
-import { CryptoAssets, CryptoDataResult } from '@/data'
+import { CryptoAsset, CryptoAssets, CryptoDataResult } from '@/data'
 import { percentDifference } from '@/utils'
 
 type Context = {
+  addAsset: (newAsset: CryptoAsset) => void
   assets: [] | CryptoAssets
   crypto: [] | CryptoDataResult
   loading: boolean
 }
 
 export const CryptoContext = createContext<Context>({
+  addAsset: () => {},
   assets: [],
   crypto: [],
   loading: false,
@@ -51,8 +53,14 @@ export const CryptoContextProvider = ({ children }: { children: ReactNode }) => 
     preload()
   }, [])
 
+  const addAsset = (newAsset: CryptoAsset) => {
+    setAssets(prev => [...prev, newAsset])
+  }
+
   return (
-    <CryptoContext.Provider value={{ assets, crypto, loading }}>{children}</CryptoContext.Provider>
+    <CryptoContext.Provider value={{ addAsset, assets, crypto, loading }}>
+      {children}
+    </CryptoContext.Provider>
   )
 }
 
