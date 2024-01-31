@@ -1,18 +1,9 @@
 import { useState } from 'react'
 
+import { CoinInfo } from '@/components/ui/AddAssetForm/CoinInfo'
 import { useCrypto } from '@/context'
 import { CryptoCoinData } from '@/data'
-import {
-  Button,
-  DatePicker,
-  Divider,
-  Flex,
-  Form,
-  InputNumber,
-  Select,
-  Space,
-  Typography,
-} from 'antd'
+import { Button, DatePicker, Divider, Form, InputNumber, Result, Select, Space } from 'antd'
 
 type FieldType = {
   amount?: number
@@ -92,12 +83,7 @@ export const AddAssetForm = () => {
       validateMessages={validateMessages}
       wrapperCol={{ span: 10 }}
     >
-      <Flex align={'center'}>
-        <img alt={coin.name} src={coin.icon} style={{ marginRight: '10px', width: '40px' }} />
-        <Typography.Title level={2} style={{ margin: '0' }}>
-          {coin.name}
-        </Typography.Title>
-      </Flex>
+      <CoinInfo coin={coin} />
       <Divider />
 
       <Form.Item<FieldType>
