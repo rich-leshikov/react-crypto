@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { CoinInfo } from '@/components'
 import { useCrypto } from '@/context'
@@ -10,6 +10,13 @@ type FieldType = {
   date?: string
   price?: number
   total?: number
+}
+
+type AssetType = {
+  amount: number
+  date: any
+  id: string
+  price: number
 }
 
 const validateMessages = {
@@ -27,9 +34,21 @@ export const AddAssetForm = () => {
   const [coin, setCoin] = useState<CryptoCoinData | null>(null)
   const [form] = Form.useForm()
   const { crypto } = useCrypto()
+  const assetRef = useRef<AssetType>()
 
   const onFinish = (values: any) => {
-    console.log('Success:', values)
+    if (coin) {
+      assetRef.current = {
+        /* eslint-disable */
+        id: coin.id,
+        amount: values.amount,
+        price: values.price,
+        date: values.date?.$d ?? new Date(),
+        /* eslint-enable */
+      }
+    }
+
+    setSubmitted(true)
   }
 
   const onAmountChange = (value: null | number) => {
@@ -61,7 +80,7 @@ export const AddAssetForm = () => {
           </Button>,
         ]}
         status={'success'}
-        subTitle={`Added ${42} of ${coin?.name} by price ${24}`}
+        subTitle={`Added ${assetRef.current?.amount} of ${coin?.name} by price ${assetRef.current?.price}`}
         title={'Your asset has been added successfully!'}
       />
     )
