@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
-import { CoinInfoModal } from '@/components'
+import { AddAssetForm, CoinInfoModal } from '@/components'
 import { useCrypto } from '@/context'
 import { CryptoCoinData } from '@/data'
-import { Button, Layout, Modal, Select, Space } from 'antd'
+import { Button, Drawer, Layout, Modal, Select, Space } from 'antd'
 
 /* eslint-disable */
 const headerStyle: React.CSSProperties = {
@@ -20,6 +20,7 @@ const headerStyle: React.CSSProperties = {
 export const AppHeader = () => {
   const [select, setSelect] = useState<boolean>(false)
   const [modal, setModal] = useState<boolean>(false)
+  const [drawer, setDrawer] = useState<boolean>(false)
   const [coin, setCoin] = useState<CryptoCoinData | null>(null)
   const { crypto } = useCrypto()
 
@@ -64,10 +65,15 @@ export const AppHeader = () => {
         style={{ width: '250px' }}
         value={['press / to open']}
       />
-      <Button type={'primary'}>Add Asset</Button>
+      <Button onClick={() => setDrawer(true)} type={'primary'}>
+        Add Asset
+      </Button>
       <Modal footer={null} onCancel={() => setModal(false)} open={modal}>
         <CoinInfoModal coin={coin} />
       </Modal>
+      <Drawer onClose={() => setDrawer(false)} open={drawer} title={'Basic Drawer'}>
+        <AddAssetForm />
+      </Drawer>
     </Layout.Header>
   )
 }
