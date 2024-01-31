@@ -642,4 +642,5 @@ export const cryptoAssets = [
 
 export type CryptoData = typeof cryptoData
 export type CryptoDataResult = typeof cryptoData.result
+export type CryptoCoinData = (typeof cryptoData.result)[0]
 export type CryptoAssets = typeof cryptoAssets
