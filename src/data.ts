@@ -630,16 +630,6 @@ export const cryptoAssets = [
     totalAmount: 0,
     totalProfit: 0,
   },
-  {
-    amount: 10000,
-    date: new Date(),
-    grow: false,
-    growPercent: 0,
-    id: 'dogecoin',
-    price: 0.072,
-    totalAmount: 0,
-    totalProfit: 0,
-  },
 ]
 
 export type CryptoData = typeof cryptoData
