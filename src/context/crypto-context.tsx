@@ -9,7 +9,6 @@ type Context = {
   assets: [] | CryptoAssets
   crypto: [] | CryptoDataResult
   loading: boolean
-  mapAssets: (assets: CryptoAssets, result: CryptoDataResult) => CryptoAssets
 }
 
 export const CryptoContext = createContext<Context>({
@@ -17,7 +16,6 @@ export const CryptoContext = createContext<Context>({
   assets: [],
   crypto: [],
   loading: false,
-  mapAssets: assets => assets,
 })
 
 export const CryptoContextProvider = ({ children }: { children: ReactNode }) => {
@@ -62,7 +60,7 @@ export const CryptoContextProvider = ({ children }: { children: ReactNode }) => 
   }, [])
 
   return (
-    <CryptoContext.Provider value={{ addAsset, assets, crypto, loading, mapAssets }}>
+    <CryptoContext.Provider value={{ addAsset, assets, crypto, loading }}>
       {children}
     </CryptoContext.Provider>
   )
