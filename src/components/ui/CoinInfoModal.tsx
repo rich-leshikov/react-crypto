@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
+import { CoinInfo } from '@/components'
 import { CryptoCoinData } from '@/data'
-import { Divider, Flex, Tag, Typography } from 'antd'
+import { Divider, Tag, Typography } from 'antd'
 
 type CoinInfoModalProps = { coin: CryptoCoinData | null }
 
@@ -12,12 +13,7 @@ export const CoinInfoModal: FC<CoinInfoModalProps> = ({ coin }) => {
 
   return (
     <>
-      <Flex align={'center'}>
-        <img alt={coin.name} src={coin.icon} style={{ marginRight: '10px', width: '40px' }} />
-        <Typography.Title level={2} style={{ margin: '0' }}>
-          ({coin.symbol}) {coin.name}
-        </Typography.Title>
-      </Flex>
+      <CoinInfo coin={coin} isWithSymbol />
       <Divider />
       <Typography.Paragraph>
         <Typography.Text strong>1 hour: </Typography.Text>
