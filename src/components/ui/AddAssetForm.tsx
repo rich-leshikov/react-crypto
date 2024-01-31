@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { CoinInfo } from '@/components/ui/AddAssetForm/CoinInfo'
+import { CoinInfo } from '@/components'
 import { useCrypto } from '@/context'
 import { CryptoCoinData } from '@/data'
 import { Button, DatePicker, Divider, Form, InputNumber, Result, Select, Space } from 'antd'

@@ -5,6 +5,7 @@ import { Flex, Typography } from 'antd'
 
 type CoinInfoProps = {
   coin: CryptoCoinData
+  isWithSymbol?: boolean
 }
 
 export const CoinInfo: FC<CoinInfoProps> = ({ coin }) => {

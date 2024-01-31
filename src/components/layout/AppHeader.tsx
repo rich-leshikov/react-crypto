@@ -68,9 +68,11 @@ export const AppHeader = () => {
       <Button onClick={() => setDrawer(true)} type={'primary'}>
         Add Asset
       </Button>
+
       <Modal footer={null} onCancel={() => setModal(false)} open={modal}>
         <CoinInfoModal coin={coin} />
       </Modal>
+
       <Drawer
         destroyOnClose
         onClose={() => setDrawer(false)}
