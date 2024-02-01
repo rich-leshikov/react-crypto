@@ -11,6 +11,7 @@ const headerStyle: React.CSSProperties = {
   textAlign: 'center',
   height: 60,
   padding: '1rem',
+  backgroundColor: '#323646',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',

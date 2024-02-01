@@ -6,6 +6,7 @@ import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 import { Card, Layout, List, Statistic, Tag, Typography } from 'antd'
 
 const siderStyle: React.CSSProperties = {
+  backgroundColor: '#323646',
   padding: '1rem',
 }
 

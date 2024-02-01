@@ -5,7 +5,7 @@ import { useCrypto } from '@/context'
 import { Layout, Typography } from 'antd'
 
 const contentStyle: React.CSSProperties = {
-  backgroundColor: '#001529',
+  backgroundColor: '#323646',
   color: '#fff',
   minHeight: 'calc(100vh - 60px)',
   padding: '1rem',
