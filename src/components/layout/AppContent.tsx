@@ -34,6 +34,7 @@ export const AppContent = () => {
         Portfolio: {total}$
       </Typography.Title>
       <PortfolioChart />
+      <AssetsTable />
     </Layout.Content>
   )
 }
