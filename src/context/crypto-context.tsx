@@ -32,6 +32,7 @@ export const CryptoContextProvider = ({ children }: { children: ReactNode }) => 
           ...asset,
           grow: asset.price < coin.price,
           growPercent: percentDifference(asset.price, coin.price),
+          name: coin.name,
           totalAmount: asset.amount * coin.price,
           totalProfit: asset.amount * coin.price - asset.amount * asset.price,
         }
