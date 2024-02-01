@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Layout } from 'antd'
+import { useCrypto } from '@/context'
+import { Layout, Typography } from 'antd'
 
 const contentStyle: React.CSSProperties = {
   backgroundColor: '#001529',
@@ -11,5 +12,26 @@ const contentStyle: React.CSSProperties = {
 }
 
 export const AppContent = () => {
-  return <Layout.Content style={contentStyle}>Content</Layout.Content>
+  const { assets, crypto } = useCrypto()
+
+  const total = assets
+    .map(asset => {
+      const coin = crypto.find(c => c.id === asset.id)
+
+      if (coin) {
+        return asset.amount * coin.price
+      } else {
+        return 0
+      }
+    })
+    .reduce((acc, v) => (acc += v), 0)
+    .toFixed(2)
+
+  return (
+    <Layout.Content style={contentStyle}>
+      <Typography.Title level={3} style={{ color: '#fff', textAlign: 'left' }}>
+        Portfolio: {total}$
+      </Typography.Title>
+    </Layout.Content>
+  )
 }
