@@ -37,6 +37,7 @@ export const AddAssetForm = () => {
         amount: values.amount,
         price: values.price,
         date: values.date ?? new Date(),
+        name: coin.name,
         grow: false,
         growPercent: 0,
         totalAmount: 0,
