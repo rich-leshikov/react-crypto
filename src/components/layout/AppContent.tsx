@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { AssetsTable, PortfolioChart } from '@/components'
 import { useCrypto } from '@/context'
 import { Layout, Typography } from 'antd'
 
@@ -32,6 +33,7 @@ export const AppContent = () => {
       <Typography.Title level={3} style={{ color: '#fff', textAlign: 'left' }}>
         Portfolio: {total}$
       </Typography.Title>
+      <PortfolioChart />
     </Layout.Content>
   )
 }
